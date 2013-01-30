@@ -14,5 +14,6 @@
 - (void)setSecret:(NSString *)secret forKey:(NSString *)key;
 - (NSString *)secretForKey:(NSString *)key;
 - (void)removeSecretForKey:(NSString *)key;
+- (void)removeAllSecrets;
 
 @end

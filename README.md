@@ -16,6 +16,9 @@ NSString *secret = [[GSKeychain systemKeychain] secretForKey:@"myAccessToken"];
 
 // Delete a secret
 [[GSKeychain systemKeychain] removeSecretForKey:@"myAccessToken"];
+
+// Delete all secrets
+[[GSKeychain systemKeychain] removeAllSecrets];
 ```
 
 #Adding to your project
