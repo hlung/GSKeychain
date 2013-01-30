@@ -57,4 +57,22 @@ static NSString *testSecret = nil;
     STAssertNil(secret, @"secretForKey: returns nil when secret removed");
 }
 
+- (void)testRemoveAll
+{
+    GSKeychain *kc = [GSKeychain systemKeychain];
+    NSString *key1 = @"key1";
+    NSString *key2 = @"key2";
+    
+    [kc setSecret:@"Some secret" forKey:key1];
+    [kc setSecret:@"Another secret" forKey:key2];
+    
+    STAssertNotNil([kc secretForKey:key1], @"Sanity check: make sure secret is in keychain");
+    STAssertNotNil([kc secretForKey:key2], @"Sanity check: make sure secret is in keychain");
+    
+    [kc removeAllSecrets];
+    
+    STAssertNil([kc secretForKey:key1], @"Secret for key1 was deleted by removeAllSecrets");
+    STAssertNil([kc secretForKey:key2], @"Secret for key2 was deleted by removeAllSecrets");
+}
+
 @end
